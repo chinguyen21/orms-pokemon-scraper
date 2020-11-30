@@ -18,16 +18,16 @@ class Pokemon
 
   end
 
-  def self.find(id, db)
+  def self.find(id_num, db)
     sql=<<-SQL
       SELECT *
       FROM pokemon
       WHERE id = ?
     SQL
-    row = db.execute(sql,id)[0]
+    row = db.execute(sql,id_num)[0]
     name = row[1]
     type = row[2]
-    new_pokemon = Pokemon.new(name: name, type: type, db: db, id: id)
+    new_pokemon = Pokemon.new(name: name, type: type, db: db, id: id_num)
   end
 
 end
